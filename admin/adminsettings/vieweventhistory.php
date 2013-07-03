@@ -1,0 +1,156 @@
+<?php include('header.php'); 
+      
+	
+	 $id=$_GET['id'];
+
+?>
+	<!--<div id="welcome" title="Welcome to Shopsteria">
+<p><strong>Here admin can View the Added category names. On this page admin can able to edit,delete and change the status of the category details.</strong></p>
+	</div>-->
+<div id="page-wrapper">
+		<div id="main-wrapper">
+			<div id="main-content">
+				<div class="title">
+				<a name="viewcat"></a>
+				<h3>Event Member Details</h3>
+				</div>
+				<table width="548">	
+			  <tr  align="center"> 
+
+  </tr>
+  <tr><td>&nbsp;</td></tr>
+  </table>
+				<div class="hastable">
+					<form name="myform" class="" method="post" action="">
+						<table width="70%" border="0" align="center" cellpadding="3" cellspacing="0" class="tblebg">
+  
+  <tr>
+  
+  
+  
+		
+    
+    <td width="97%" valign="top"><table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+<tr>
+        <td colspan="3" align="center" class="linksnew">&nbsp;</td>
+      </tr>
+	  
+	  
+	  <?php
+	  $news_Check	= "SELECT * FROM tbl_cycling_registerevent WHERE `event_id` ='$id'";
+	$news_Check1	= mysql_query($news_Check) or die(mysql_error());
+	
+	$num=mysql_num_rows($news_Check1);
+	if($num>0)
+	{
+	
+	while($news_Fetch	= mysql_fetch_array($news_Check1))
+	{
+	?>
+      <tr align="center" class="tdhead">
+        <td align="right" width="20%" valign="top" class="white"><strong>Name</strong></td>
+        <td align="center" width="3%"  valign="top" class="bluehead">:</td>
+        <td align="left" valign="top" class="white1"><?php echo $news_Fetch['firstname'];?></td>
+      </tr>
+	
+	   <tr align="center" class="tdhead">
+        <td align="right" width="20%" valign="top" class="white"><strong>Email</strong></td>
+        <td align="center" width="3%"  valign="top" class="bluehead">:</td>
+        <td align="left" valign="top" class="white1"><?php echo $news_Fetch['email'];?></td>
+      </tr>
+
+
+	<tr>
+        <td colspan="3" align="center" class="linksnew">&nbsp;</td>
+      </tr>
+<tr>
+        <td colspan="3" align="center" class="linksnew">&nbsp;</td>
+      </tr>
+
+	 <?php } } else {?>
+	  	
+			<tr>
+        <td colspan="3" align="center" class="linksnew"><center><b>No Members Register For This Event.</b></center></td>
+      </tr>
+	  <?php } ?>
+		 	  
+      <tr align="center" valign="middle" class="actionText">
+        <td colspan="3" align="right"><a class="linksnew" href="javascript:history.back(-1);">Back</a> </td>
+      </tr>
+    </table></td>
+   
+  </tr>
+ 
+</table>
+					</form>
+
+<?php 					
+					if($limit < $total)
+					{
+							if ($page == 1)
+							{
+								echo ""; 
+							}
+							else 
+							{       
+								echo "<a href=\"vieweventhistory.php?sortby=".$SortList."&page=" . ($page - 1) . "\" class='linksnew'>Prev</a>"; 
+							}
+							for ($i = 1; $i <= $pager->numPages; $i++) 
+							{ 
+								echo " | "; 
+								if ($i == $pager->page)
+								{ 
+									echo "<span class='Hint1'>"."$i"."</span>"; 
+								}
+								else
+								{	 
+									echo "<a href=\vieweventhistory.php?sortby=".$SortList."&page=$i\" class='linksnew'> $i</a>"."</font>"; 
+								}
+							} 
+					 
+							if ($i > 1)
+							{
+								echo " | "; 
+							}
+							if ($page == $pager->numPages) 
+							{
+								echo "";
+							} 
+							else   
+							{     
+								echo "<a href=\"vieweventhistory.php?sortby=".$SortList."&page=" . ($page + 1) . "\" class='linksnew'>Next</a>";
+							}
+					}		
+					?>    
+	
+		  
+					
+				
+
+				<!--<div class="title title-spacing">
+					<h3>Pagination example</h3>
+				</div>-->
+				<!--<ul class="pagination">
+					<li class="previous-off">&laquo;Previous</li>
+					<li class="active">1</li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li>...........</li>
+					<li><a href="#">7</a></li>
+					<li><a href="#">8</a></li>
+					<li><a href="#">9</a></li>
+
+					<li><a href="#">10</a></li>
+					<li class="next"><a href="#">Next &raquo;</a></li>
+				</ul>-->
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+<?php include('sidebar.php'); ?>
+	</div>
+	<div class="clearfix"></div>
+<?php include('footer.php'); ?>
+</body>
+</html>

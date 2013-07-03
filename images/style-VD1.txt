@@ -1,0 +1,107 @@
+/* Form_Style */
+/* Menu_STYLE*/
+#menu{
+  width:950px;
+  margin:0px;
+  margin-left:0px;
+  margin-top:-13px;
+  /* Clear floats */
+  float:left;
+  /* Bring the nav above everything else */
+  position:relative;
+  z-index:5;
+}
+#menu ul{
+  list-style:none;
+  padding:0 0px;
+}
+#menu li{
+  list-style:none;
+  display:block;
+  float:left;
+  margin:0 0px;
+  position:relative;
+}
+#menu li a{
+  display:block;
+  float:left;
+  color:#ebdc10;
+  font-size:12px;
+  font-weight:bold;
+  line-height:36px;
+  padding:0 0 0 8px;
+  text-decoration:none;
+  cursor:pointer;
+}
+#menu li a span{
+  display:block;
+  float:left;
+  color:#ebdc10;
+  line-height:36px;
+  padding:0 24px 0 10px;
+}
+#menu li a:hover{
+  display:block;
+  float:left;     
+  color:#000;
+  background:url(menu_013_h_l.png) no-repeat left center;
+  height:36px;
+}
+#menu li a:hover span{
+  display:block;
+  float:left;     
+  color:#000;
+  background:url(menu_013_h_r.png) no-repeat right center;
+  height:36px;
+}
+#menu li a.current{
+  display:block;
+  float:left;
+  color:#000;
+  font-size:12px;
+  font-weight:bold;
+  background:url(menu_013_h_l.png) no-repeat left center;
+  line-height:36px;
+  padding:0 0 0 8px;
+  text-decoration:none;
+}
+#menu li a.current span{     
+  display:block;
+  float:left;
+  background:url(menu_013_h_r.png) no-repeat right center;
+  color:#000;
+  line-height:36px;
+  padding:0 24px 0 10px;
+}
+    
+    /*--- DROPDOWN ---*/
+#menu ul{
+/*      background:#fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+/*      background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+        background:url(menu_013_h_r.png) no-repeat right center;
+        list-style:none;
+        position:absolute;
+        left:-9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+}
+#menu ul li{
+        padding-top:1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+        float:none;
+}
+#menu ul a{
+        white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+}
+#menu li:hover ul{ /* Display the dropdown on hover */
+        left:0; /* Bring back on-screen when needed */
+}
+#menu li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
+/*      background:#6b0c36; */
+        background:url(menu_013_h_r.png) no-repeat right center;
+        text-decoration:underline;
+}
+#menu li:hover ul a{ /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */
+        text-decoration:none;
+}
+#menu li:hover ul li a:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+/*      background:#333; */
+        background:url(menu_013_h_r.png) no-repeat right center;
+}

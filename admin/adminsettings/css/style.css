@@ -1,0 +1,354 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin-left: 00px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-family: Arial;
+	font-size: 12px;
+	background-image: url(bg.jpg);
+	background-repeat: repeat-x;
+	background-color:#8A260F;
+}
+/* Body Style */
+.top_right
+{
+background-image:url(top_right.png);
+height:316px;
+width:270px;s
+background-repeat:no-repeat;
+background-position:top left:
+}
+.top_middle
+{
+background-image: url(top_middle.png);
+height:316px;
+width:443px;
+background-repeat:no-repeat;
+background-position:top;
+}
+
+.searchbox_right
+{
+background-image:url(search.png);
+width:249px;
+height:88px;
+background-repeat:no-repeat;
+background-position: top right;
+}
+.middle_menu
+{
+background-image:url(menu_middle1.png);
+height:49px;
+background-repeat:repeat-x;
+}
+
+.middle_box_top
+{
+background-image: url(new_bo_05.png);
+background-repeat:repeat-x;
+}
+.middle_box_bottom
+{
+background-image: url(new_bo_06.png);
+background-repeat:repeat-x;
+}
+.middle_box_left
+{
+background-image: url(new_bo_07.png);
+background-repeat:repeat-y;
+}
+.middle_box_right
+{
+background-image: url(new_bo_08.png) ;
+background-repeat:repeat-y;
+}
+
+.middle_left
+{
+background-image:url(new_bo_11.png);
+width:284px;
+height:327px;
+background-repeat:no-repeat;
+background-position:top;
+}
+.middle_top_image
+{
+background-image: url(new_bo_12.png);
+width:625px;
+height:50px;
+background-repeat:no-repeat;
+background-position:top;
+}
+
+.box_border
+{
+border:#999999 solid 10px;
+}
+
+.left_box_top
+{
+background-image: url(bo_05.jpg);
+background-repeat:repeat-x;
+height:13px;
+}
+.left_box_bottom
+{
+background-image: url(bo_06.jpg);
+background-repeat:repeat-x;
+height:13px;
+}
+.left_box_left
+{
+background-image: url(bo_07.jpg);
+background-repeat:repeat-y;
+}
+.left_box_right
+{
+background-image: url(bo_08.jpg);
+background-repeat:repeat-y;
+}
+
+.welcome_line
+{
+background-image:url(li_02.png);
+height:7px;
+background-repeat:repeat-x;
+}
+.left_blue
+{
+background-image:url(bo_lo1.jpg);
+width:66px;
+height:49px;
+background-repeat:no-repeat;
+background-position:top left;
+}
+.left_blue_line
+{
+background-image: url(bo_lo3.jpg);
+width:230px;
+height:33px;
+background-repeat:no-repeat;
+background-position:top left;
+}
+
+
+.box_top_new
+{
+background-image: url(bo_new5.jpg);
+background-repeat:repeat-x;
+}
+.box_bottom_new
+{
+background-image:url(bo_new6.jpg);
+background-repeat:repeat-x;
+}
+.box_left_new
+{
+background-image:url(bo_new7.jpg);
+background-repeat:repeat-y;
+}
+.box_right_new
+{
+background-image:url(bo_new8.jpg);
+background-repeat:repeat-y;
+}
+
+
+.middle_main_top
+{
+background-image:url(middle_box_05.png);
+background-repeat:repeat-x;
+height:14px;
+}
+.middle_main_bottom
+{
+background-image:url(middle_box_06.png);
+background-repeat:repeat-x;
+height:14px;
+}
+.middle_main_left
+{
+background-image:url(middle_box_07.png);
+background-repeat:repeat-y;
+}
+.middle_main_right
+{
+background-image:url(middle_box_08.png);
+background-repeat:repeat-y;
+}
+
+.box_top
+{
+background-image: url(box_05.jpg);
+background-repeat:repeat-x;
+}
+.box_bottom
+{
+background-image:url(box_06.jpg);
+background-repeat:repeat-x;
+}
+.box_left
+{
+background-image:url(box_07.jpg);
+background-repeat:repeat-y;
+}
+.box_right
+{
+background-image:url(box_08.jpg);
+background-repeat:repeat-y;
+}
+/* Text Style */
+.head_text
+{
+font-size:18px;
+color:#545354;
+font-weight:bold;
+padding-left:15px;
+padding-bottom:5px;
+}
+.head_text_small
+{
+font-size:12px;
+color: #333333;
+font-weight:bold;
+line-height:16px;
+}
+.head_text_small1
+{
+font-size:12px;
+color: #333333;
+font-weight:bold;
+padding-left:15px;
+}
+.head_text_small_new
+{
+font-size:12px;
+color: #333333;
+}
+
+.body_text
+{
+font-size:12px;
+color:#545354;
+line-height:20px;
+padding-left:20px;
+padding-right:15px;
+text-align:justify;
+}
+.left_text
+{
+font-size:12px;
+color: #333333;
+line-height:18px;
+padding-left:10px;
+padding-right:5px;
+text-align:justify;
+}
+.left_text_new
+{
+font-size:11px;
+color:#D60D10;
+}
+.left_text_new1
+{
+font-size:11px;
+color:#000;
+}
+
+.text_white
+{
+color:#FFFFFF;
+font-weight:bold;
+font-size:14px;
+}
+.footer_text
+{color:#fff;
+font-size:11px;
+text-align:center;
+}
+
+.white_head
+{
+font-size:12px;
+color:#FFFFFF;
+font-weight:bold;
+}
+/* Menu Style */
+
+.menu2 {padding:0 0 0 90px; margin:0; list-style:none; height:28px;position:relative; }
+.menu2 li {float:left;}
+.menu2 li a {display:block; float:left; height:28px; line-height:28px; color: #333333; text-decoration:none; font-size:12px; font-family: Arial; font-weight:bold; text-align:center; padding:0 0 0 5px; cursor:pointer; }
+.menu2 li a b {float:left; display:block; padding:0 16px 0 16px;}
+.menu2 li.current a {color:#fff; }
+.menu2 li.current a b {background:url(button4.gif) no-repeat right top;}
+.menu2 li a:hover {color:#fff;}
+.menu2 li a:hover b {background:url(button4.gif) no-repeat right top;}
+.menu2 li.current a:hover {color: #fff;}
+.menu2 li.current a:hover b {color: #fff;}
+
+.button
+{
+background-image:url(button.jpg);
+width:204px;
+height:54px;
+background-repeat:no-repeat;
+font-size:14px;
+font-family:"Times New Roman", Times, serif;
+color:#FFFFFF;
+font-weight:bold;
+text-align:center;
+padding-bottom:30px;
+padding-right:10px;
+letter-spacing:1px;
+}
+.control
+{
+background-image: url(control.jpg);
+width:175px;
+height:53px;
+background-repeat:no-repeat;
+font-size:14px;
+font-family:"Times New Roman", Times, serif;
+color:#bc0c07;
+font-weight:bold;
+text-align:center;
+padding-bottom:25px;
+letter-spacing:1px;
+cursor:pointer;
+}
+.completed
+{
+background-image: url(complete.jpg);
+width:251px;
+height:53px;
+background-repeat:no-repeat;
+font-size:14px;
+font-family:"Times New Roman", Times, serif;
+color:#bc0c07;
+font-weight:bold;
+text-align:center;
+padding-bottom:25px;
+letter-spacing:1px;
+cursor:pointer;
+}
+.logout
+{
+background-image: url(logout.jpg);
+width:176px;
+height:53px;
+background-repeat:no-repeat;
+font-size:14px;
+font-family:"Times New Roman", Times, serif;
+color:#bc0c07;
+font-weight:bold;
+text-align:center;
+padding-bottom:25px;
+letter-spacing:1px;
+cursor:pointer;
+}
+/* Form Style */
+
+

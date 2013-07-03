@@ -1,0 +1,230 @@
+<?php include('header.php'); 
+
+
+	$SortBy	= $_REQUEST['sortby'];
+	if(($SortBy == "") || ($SortBy == "all")) { echo $SortList = ""; } else { $SortList = $SortBy; }
+
+
+	$Query_Limit	=	"SELECT * FROM ".ADMINPROFILE."";
+	$Result_Limit	=	mysql_query($Query_Limit);
+	$Fetch_Limit	=	mysql_fetch_array($Result_Limit);
+
+    $flag=$_REQUEST['flag'];
+    $id=$_REQUEST['cid'];
+  	
+	#For Display the Result
+	$rflag	=	$_GET['rflag'];	
+	$rType	=	$_GET['rtype'];	
+	
+	if($flag == "active")
+	{
+		$Update_Member	=	"UPDATE ".COUPON." SET `varStatus`='Active' WHERE `intCouponid`='$id'";
+		$Result_Member	=	mysql_query($Update_Member);
+		$rflag	=	"success";
+		$rType	=	"active";
+	}
+	elseif($flag == "deactive")
+	{
+		$Update_Member	=	"UPDATE ".COUPON." SET `varStatus`='DeActive' WHERE `intCouponid`='$id'";
+		$Result_Member	=	mysql_query($Update_Member);
+		$rflag	=	"success";
+		$rType	=	"deactive";
+	}
+		elseif($flag == "delete")
+	{
+		$Delete_Member	=	"DELETE FROM ".COUPON." WHERE `intCouponid`='$id'";
+		$Result_Member	=	mysql_query($Delete_Member);
+		$rflag	=	"success";
+		$rType	=	"delete";
+	}
+
+
+
+	$Q_Check	= "SELECT * FROM ".COUPON." WHERE `CouponCode` LIKE '$SortList%' ORDER BY intCouponid";
+	$R_Check	= mysql_query($Q_Check) or die(mysql_error());
+	$C_Check	= mysql_num_rows($R_Check);
+	$total		= mysql_num_rows($R_Check);	
+	
+	$page = $_GET['page']; 
+	$limit = $Fetch_Limit['intRows']; 
+	//$limit = 10; 
+
+	$pager  = getPagerData($total, $limit, $page); 
+	$offset = $pager->offset; 
+	$limit  = $pager->limit; 
+	$page   = $pager->page; 	
+	 $Q_Check1	= "SELECT * FROM ".COUPON." WHERE `CouponCode` LIKE '$SortList%'  ORDER BY intCouponid limit $offset, $limit";
+	$R_Check1	= mysql_query($Q_Check1);
+
+?>
+	<!--<div id="welcome" title="Welcome to Shopsteria">
+<p><strong>Here admin can View the Added category names. On this page admin can able to edit,delete and change the status of the category details.</strong></p>
+	</div>-->
+<div id="page-wrapper">
+		<div id="main-wrapper">
+			<div id="main-content">
+				<div class="title">
+				<a name="viewcat"></a>	<h3>View Coupon</h3>
+				</div>
+				<?php 	if($rflag == "success")  { ?>
+   	<div class="response-msg success ui-corner-all">
+									<span>
+  <?php
+  # Display the Result(Status) 
+  if($rflag == "success") 
+  { 
+	  if($rType == "active")
+	  	$rDisp	=	"Coupon Status Successfully Actived";
+	  elseif($rType == "deactive")
+	  	$rDisp	=	"Coupon  Status Successfully DeActived";
+	  elseif($rType == "delete")
+	  	$rDisp	=	"Coupon  Deleted Successfully"; 
+	 elseif($rType == "add")
+		$rDisp	=	"Coupon  Added Successfully"; 
+	 elseif($rType == "edit")
+		$rDisp	=	"Coupon  Edited Successfully"; 
+}
+	echo $rDisp;
+?>
+</span>
+			</div><?php }?>
+				<div class="hastable">
+					<table width="67%" border="0" align="center" cellpadding="3" cellspacing="0">
+	<thead> 
+	<?php if($total == 0) { ?>
+	<tr>
+	<TD colspan="2" align="center" class="information">
+		No Coupon Found!	</TD>
+	</tr>
+	
+	<?php } else { ?>
+	
+	
+<tr>
+
+
+<TR>
+<TD width="24%" align="center" class="white">SI.NO</td>
+<TD width="31%" align="left" class="white">Coupon Code </TD>
+<TD width="25%" align="center" class="white">Lock</TD>
+<!--<TD width="8%" align="center" class="white">Edit</TD>-->
+<TD width="20%" align="center" class="white">Delete</TD>
+</TR>
+</tr>
+</thead>
+
+<?php
+$i = $offset;
+ while($fetch1=mysql_fetch_array($R_Check1)) { $i++;
+ $Coupontype = $fetch1['CouponType'];
+ 
+
+?>
+
+<tr>
+<TD align="center" class="white1"><center>
+<?php echo $i; ?></center></TD>
+<TD align="left" class="white1"><center><?php echo $fetch1['CouponCode']; ?></center></TD>
+<td align="center">
+<?php if($fetch1['varStatus'] == "Active") { ?>
+
+ <a href="viewcoupon.php?flag=deactive&amp;cid=<?php echo $fetch1['intCouponid'];?>&amp;page=<?php echo $page;?>"  class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Deactive">
+								<span class="ui-icon ui-icon-unlocked"></span></a>
+								
+                                <?php /*?><a href="viewcoupon.php?flag=deactive&amp;cid=<?php echo $fetch1['intCouponid'];?>&amp;page=<?php echo $page;?>" class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Active">
+								<img src="../../images/action_check2.gif"  border="0"   width="8"/></a><?php */?>
+                                <?php } else { ?>
+								
+								<a href="viewcoupon.php?flag=active&amp;cid=<?php echo $fetch1['intCouponid'];?>&amp;page=<?php echo $page;?>"  class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Active">
+								<span class="ui-icon ui-icon-locked"></span></a>
+								
+                                <?php /*?><a href="viewcoupon.php?flag=active&amp;cid=<?php echo $fetch1['intCouponid'];?>&amp;page=<?php echo $page;?>"  class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Deactive">
+								<img src="../../images/action_delete.gif"  border="0" width="8"  /></a><?php */?>
+                                <?php } ?></td>
+<!--<td align="center">
+<a href="index.php?cid=<?php echo $fetch1['intCouponid'];?>&amp;task=edit_coupon&amp;flag=edit&amp;page=<?php echo $page;?>" class="linksnew"><img src="../../images/edit.gif" width="20" height="22" border="0" /></a></td>-->
+<td align="center">
+<a href="viewcoupon.php?flag=delete&amp;cid=<?php echo $fetch1['intCouponid'];?>&amp;page=<?php echo $page;?>" class="btn_no_text btn ui-state-default ui-corner-all tooltip" title="Delete this Coupon"><span class="ui-icon ui-icon-circle-close" onClick="return calldel('Do You Want Delete this Coupon?');"></span></a></td>
+</tr>
+
+
+
+<?php } ?>
+</table></TD>
+</tr>
+
+<?php  } ?>	
+
+<tr>
+<TD colspan="2">
+
+
+<!--<tr>
+<TD colspan="2" align="right">
+<a class="linksnew" href="javascript:history.back(-1);">Back</a></TD>
+</tr>-->
+
+<tr><td colspan="2"></TD>
+<tr><td colspan="2"></tr>    
+</table>
+
+<table width="61%"  border="0" align="left" cellpadding="3" cellspacing="3">
+          <tr>
+            <td width="97%" align="right" class="test"><?php 					
+					if($limit < $total)
+					{
+							if ($page == 1)
+							{
+								echo ""; 
+							}
+							else 
+							{       
+								echo "<a href=\"viewcoupon.php?sortby=".$SortList."&page=" . ($page - 1) . "\" class='linksnew'>Prev</a>"; 
+							}
+							for ($i = 1; $i <= $pager->numPages; $i++) 
+							{ 
+								echo " | "; 
+								if ($i == $pager->page)
+								{ 
+									echo "<span class='Hint1'>"."$i"."</span>"; 
+								}
+								else
+								{	 
+									echo "<a href=\"viewcoupon.php?sortby=".$SortList."&page=$i\" class='linksnew'> $i</a>"."</font>"; 
+								}
+							} 
+					 
+							if ($i > 1)
+							{
+								echo " | "; 
+							}
+							if ($page == $pager->numPages) 
+							{
+								echo "";
+							} 
+							else   
+							{     
+								echo "<a href=\"viewcoupon.php?sortby=".$SortList."&page=" . ($page + 1) . "\" class='linksnew'>Next</a>";
+							}
+					}		
+					?>    
+	  </td>
+  </tr>
+</table>
+
+		  
+					
+				
+
+			
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+<?php include('sidebar.php'); ?>
+	</div>
+	<div class="clearfix"></div>
+<?php include('footer.php'); ?>
+</body>
+</html>

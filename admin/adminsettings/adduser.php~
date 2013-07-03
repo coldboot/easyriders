@@ -1,0 +1,630 @@
+<?php
+
+	include('header.php'); 
+
+	$cid="";
+	
+	$resumeid="";
+
+	if($_REQUEST['cid'] !="")
+
+	$cid=$_REQUEST['cid'];	
+
+	$disptitle="Add";
+
+	
+
+	if($cid != "")
+
+	{
+
+		$sel_cat1="SELECT * FROM tbl_iui_user WHERE intid = '$cid'";
+
+		$res_cat1=mysql_query($sel_cat1) or die(mysql_error());
+
+		$fetch_cat1=mysql_fetch_array($res_cat1);
+
+	
+
+		$Firstname=$fetch_cat1['Firstname'];
+
+		$Lastname=$fetch_cat1['Lastname'];
+
+		$Username = $fetch_cat1['Username'];
+
+		$Password = $fetch_cat1['Password'];
+
+		$City = $fetch_cat1['City'];
+
+		$Country=$fetch_cat1['Country'];
+
+		$State =$fetch_cat1['State'];
+
+		$Email = $fetch_cat1['Email'];
+		
+		$Zipcode = $fetch_cat1['Zipcode'];
+		
+		$Resume = $fetch_cat1['Resume'];
+		
+		$resumeid= $fetch_cat1['resumeid'];
+		
+		
+		$disptitle="Update";	
+
+	}
+
+	
+
+	if(isset($_POST['submit']))
+
+	{
+
+	$Firstname=$_POST['Firstname'];
+
+	$Lastname=$_POST['Lastname'];
+
+	$Username = $_POST['Username'];
+
+	$Password = $_POST['Password'];
+
+	$City = $_POST['City'];
+
+	$Country=$_POST['Country'];
+
+	$State =$_POST['State'];
+
+	$Email = $_POST['Email'];
+		
+	$Zipcode = $_POST['Zipcode'];
+		
+	$Resume = addslashes($_POST['Resume']);
+
+		 if(isset($_FILES['file']))
+		 {
+		 $file=$_FILES['file'];
+
+			$filename=$file['name'];
+
+			 $filesize=$file['size'];
+
+		  $filetype=$file['type'];	
+			
+			$tempname=$file['tmp_name'];
+		
+			
+
+			//$dir="/opt/lampp/htdocs/projects/venkatesh/rarashop/images/";
+
+	
+				/*	$dir = $_SERVER['PHP_SELF'];
+					for($i=0;$i<strlen($dir);$i++)
+						{
+							if(substr($dir,$i,1)=="/") $slashpos=$i;
+						}
+							$dir = substr($dir,0,$slashpos);
+$dir = $_SERVER['DOCUMENT_ROOT'].$dir."/";
+	*/
+
+	
+			$fopen = fopen($tempname,"rb");
+
+			
+
+			$fread= fread($fopen,$filesize);
+
+			
+
+			$content = addslashes($fread);
+
+					
+
+					if($cid=="")
+					{
+					
+					
+
+					$query = "INSERT INTO tbl_iui_upresume (rid,name, size, type, content) "."VALUES ('','$filename', '$filesize', '$filetype', '$content')";
+					
+
+	    mysql_query($query) or die('Error, query failed');
+		$resumeid=mysql_insert_id();
+		}
+		else
+		{
+		$upd_res= "UPDATE tbl_iui_upresume SET name='$filename',size='$filesize',type='$filetype',content='$content' WHERE rid='$resumeid'";
+			    mysql_query($upd_res) or die('Error, query failed');
+		}
+	}
+ if (($resumeid =="") || ($Resume==""))
+ $error="Please upload or paste your resume";
+ else
+ {
+ 
+		if($cid=="")
+
+		{
+
+			
+					$ins_cat="INSERT INTO tbl_iui_user (`intid`,`Firstname`,`Lastname`,`Username`,`Password`,`City`,`Zipcode`,`Country`,`State`,`Email`,`Resume`,`resumeid`,`user_level`,`varStatus`) VALUES ('','$Firstname','$Lastname','$Username','$Password','$City','$Zipcode','$Country','State','$Email','$Resume','$resumeid','User','Active')";
+
+					mysql_query($ins_cat) or die(mysql_error());
+
+					$insert_id	=	mysql_insert_id();
+
+					
+
+					$flag="success"; 
+
+           	header("Location:viewuser.php?rflag=success&rtype=add");
+
+			
+
+		}
+
+		else
+
+		{
+
+	
+					
+					$upd_cat="UPDATE tbl_iui_user SET Firstname='$Firstname',
+
+														Lastname='$Lastname',
+
+														Username='$Username',
+
+														Password='$Password',
+
+														City='$City',
+
+														Zipcode='$Zipcode',
+
+														Country='$Country',
+														
+														State='$State',
+														
+														Email='$Email',
+														
+														Resume='$Resume',
+														
+														resumeid='$resumeid'
+																												
+																												
+														WHERE intid='$cid'";
+
+					mysql_query($upd_cat)or die(mysql_error());
+
+							
+
+					$flag="update";
+
+					header("Location:viewuser.php?rflag=success&rtype=edit");
+
+				
+
+		}
+
+	}
+	}
+
+?>
+
+
+
+<script language="javascript" type="text/javascript">
+
+
+
+function user_val()
+
+{
+
+      
+
+		  if ( document.user.Firstname.value == "" )
+
+		 { 
+
+			 alert ("Please Enter The Firstname");
+
+			 document.user.Firstname.focus();
+
+			 return false;
+
+		 }
+
+		 
+
+		 if (  document.user.Lastname.value == "")
+
+		 { 
+
+			 alert ("Please Enter The Lastname");
+
+			 document.user.Lastname.focus();
+
+			 return false;
+
+		 }
+
+ 		 
+
+		/* if (  document.project.mem.value == "")
+
+		 { 
+
+			 alert ("Please Select Your Team Members");
+
+			 document.project.mem.focus();
+
+			 return false;
+
+		 }*/
+
+		 
+
+		 if (  document.user.Username.value == "")
+
+		 { 
+
+			 alert ("Please Enter The Username ");
+
+			 document.user.Username.focus();
+
+			 return false;
+
+		 }
+
+
+
+		 if (  document.user.Password.value == "")
+
+		 { 
+
+			 alert ("Please Enter The Password");
+
+			 document.user.Password.focus();
+
+			 return false;
+
+		 }
+
+ if (  document.user.City.value == "")
+
+		 { 
+
+			 alert ("Please Enter The City");
+
+			 document.user.City.focus();
+
+			 return false;
+
+		 }
+
+		 
+ if (  document.user.Zipcode.value == "")
+
+		 { 
+
+			 alert ("Please Enter The Zipcode");
+
+			 document.user.Zipcode.focus();
+
+			 return false;
+
+		 }
+	 if (  document.user.Zipcode.value.length !=5)
+
+		 { 
+
+			 alert ("Zipcode is a 5 digit number");
+
+			 document.user.Zipcode.focus();
+
+			 return false;
+
+		 }
+		 
+		 		 
+ if (  document.user.Country.value == "Choose")
+
+		 { 
+
+			 alert ("Please Choose your Country");
+
+			 document.user.Country.focus();
+
+			 return false;
+
+		 }
+		 
+		 if (  document.user.State.value == "Choose")
+
+		 { 
+
+			 alert ("Please Choose your State");
+
+			 document.user.State.focus();
+
+			 return false;
+
+		 } 
+		 if (  document.user.Email.value == "")
+
+		 { 
+
+			 alert ("Please Enter Your Email");
+
+			 document.user.Email.focus();
+
+			 return false;
+
+		 } 
+
+		return true;
+
+	}
+
+		
+
+
+
+</script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+
+
+
+	<div id="page-wrapper">
+
+		<div id="main-wrapper">
+
+			<div id="main-content">
+
+				
+
+				
+
+				<div class="clearfix"></div>
+
+				<div class="title title-spacing">
+
+					<h2><?php echo $disptitle;?> User </h2>
+
+				</div>
+
+				<div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all form-container">
+
+					<div class="portlet-header ui-widget-header"><?php echo $disptitle;?> User</div>
+
+				    	<?php if(!empty($error)){?>
+
+							<div class="response-msg error ui-corner-all">
+
+								<span><?php echo $error; ?></span>
+
+							</div>
+
+						<?php } ?>
+
+					<div class="portlet-content">
+
+
+
+						<form action="" method="post" enctype="multipart/form-data"  name="user" onsubmit="return user_val();" >
+
+							<ul>
+
+								<li>
+
+									<label  class="desc">First Name</label>
+
+									<div>
+
+						<input type="text" tabindex="1" maxlength="255" value="<?php echo $Firstname;?>"  name="Firstname" />
+
+                       				</div>
+
+								</li>		
+
+								
+
+								<li>
+
+									<label  class="desc">Last Name</label>
+
+									<div>
+
+							<input type="text" tabindex="1" maxlength="255" value="<?php echo $Lastname;?>"  name="Lastname" />
+
+									</div>
+
+								</li>		
+
+								
+
+								<li>
+
+									<label  class="desc">User Name</label>
+
+									<div> 
+
+										
+							<input type="text" tabindex="1" maxlength="255" value="<?php echo $Username;?>" name="Username" />
+	</div>
+
+								</li>		
+											
+											<li>
+
+									<label  class="desc">Password</label>
+
+									<div> 
+
+										
+							<input type="password" tabindex="1" maxlength="255" value="<?php echo $Password;?>" name="Password" />
+	</div>
+
+								</li>			
+								<li>
+
+									<label  class="desc">City</label>
+
+									<div> 
+
+										
+							<input type="text" tabindex="1" maxlength="255" value="<?php echo $City;?>"  name="City" />
+	</div>
+
+								</li>				
+									<li>
+
+									<label  class="desc">Zipcode</label>
+
+									<div> 
+
+										
+							<input type="text" tabindex="1" maxlength="255" value="<?php echo $Zipcode;?>" name="Zipcode" />
+	</div>
+
+								</li>		
+								<li>
+
+									<label  class="desc">State</label>
+
+									<div> 
+
+										
+							<input type="text" tabindex="1" maxlength="255" value="<?php echo $State;?>" name="State" />
+	</div>
+
+								</li>		
+								<li>
+
+									<label  class="desc">Email</label>
+
+									<div> 
+
+										
+							<input type="text" tabindex="1" maxlength="255" value="<?php echo $Email;?>" name="Email" />
+	</div>
+
+								</li>
+								<li>
+
+									<label  class="desc">Country</label>
+
+									<div> 
+
+										<select name="Country" tabindex="1" style="width:auto">
+										<option value="Choose"  selected="selected">Choose</option>
+							<?php foreach($countryarray as $country)  { 
+							if ($Country==$country)
+							$selected="selected";
+							else 
+							$selected="";
+							
+							?>
+
+                 <option value="<?php echo $country;?>" <?php echo $selected;?>><?php  echo $country;?></option>
+
+
+
+                                       		<?php 	
+
+									  			
+												}
+
+											 ?>
+                                   
+                                   	</select>
+
+									</div>
+
+								</li>
+
+																
+
+							    
+
+								
+
+								
+
+								
+
+								<li>
+
+
+									<label  class="desc">Resume</label>
+									
+									
+<div class="red"><input name="file"  type="file" /><?php if($resumeid != "") {?><a href="download.php?id=<?php echo $resumeid; ?>" class="btn_no_text btn ui-state-default ui-corner-all tooltip"  title="Download resume"><pre style="font-size:13px; color:green"><b>Download  Resume</b></pre></a><?php }?> (Or ,Paste your resume here)
+
+</div><br/>
+									<div>
+
+										<?php
+
+											$oFCKeditor=new FCKeditor('Resume');
+
+											$oFCKeditor->BasePath="../../fckeditor/" ;
+
+											//$oFCKeditor->ToolbarSet = "Basic" ;
+
+											$oFCKeditor->Skin="office2003";
+
+											$oFCKeditor ->Height='350';
+
+											$oFCKeditor->Value=stripslashes($fetch_cat1['Resume']);
+
+											$oFCKeditor->Create();
+
+										?>
+
+									</div>
+
+							  </li>
+
+							  
+
+							  <li class="buttons">
+
+							  		<input type="submit" value="<?php echo $disptitle;?>" class="submit" name="submit" />									
+
+									<input name="cid" type="hidden" id="cid"  value="<?php echo $cid;?>"/>
+
+							  </li>
+
+							</ul>
+
+							
+
+						</form>
+
+					</div>
+
+				</div>
+
+				<div class="clearfix"></div>
+
+				<i class="note"></i>
+
+			</div>
+
+			<div class="clearfix"></div>
+
+		</div>
+
+<?php include('sidebar.php'); ?>
+
+	</div>
+
+	<div class="clearfix"></div>
+
+<?php include('footer.php'); ?>
+
+</body>
+
+</html>
+
