@@ -104,7 +104,7 @@ elseif(isset($_POST['submit_x']))
 	$edt = strtotime ($edatetime);
 	$etimestr = date ("D j M g:i A", $edt);
 	$message="<b>New $etype proposed by $curuser<br><br>$ename<br>$etimestr<br>$epace<br>$edesc<br>
-		<a href=\"http://www.sydney-easy-riders.com.au/calendar.php?page=calendar\" target=\"_blank\">www.sydney-easy-riders.com.au/calendar.php?page=calendar</a><br>";
+		<a href=\"/calendar.php?page=calendar\" target=\"_blank\">www.sydney-easy-riders.com.au/calendar.php?page=calendar</a><br>";
 	$email11="calendar@sydney-easy-riders.com.au";
 	$subject = "$ename $etimestr";
 	$headers = "From: ".$email11."\r\r\n";

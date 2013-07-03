@@ -25,7 +25,7 @@
 
   <p>You have requested an invalid page from our web server.</p>
   <p>If you bookmarked this page you may need to change your bookmarks.</p>
-  <p>Please click here to return to the <a href="http://www.sydney-easy-riders.com.au" target="_top">Sydney Easy Riders</a> home page.</p>
+  <p>Please click here to return to the <a href="/" target="_top">Sydney Easy Riders</a> home page.</p>
 
   </td>
   </tr>
@@ -39,7 +39,7 @@
     </td>
   </tr>
   <tr>
-    <td class="footertext"><a href="http://www.sydney-easy-riders.com.au"  target="_top">www.sydney-easy-riders.com.au</a></td>
+    <td class="footertext"><a href="/"  target="_top">www.sydney-easy-riders.com.au</a></td>
     <td align="right" class="footertext">Copyright &copy; 2013 Sydney Easy Riders</td>
   </tr>
 </table>

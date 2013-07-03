@@ -87,7 +87,7 @@
 				$etype = $Notify_fetch['event_type'];
 
 				$message="<b>$curuser $joinstr the $etype you posted on the Sydney Easy Riders website<br>Rider email: $curemail<br><br>$ename<br>$etimestr<br>$epace<br>
-					<a href=\"http://www.sydney-easy-riders.com.au/calendar.php?page=calendar\" target=\"_blank\">www.sydney-easy-riders.com.au/calendar.php?page=calendar</a><br>";
+					<a href=\"/calendar.php?page=calendar\" target=\"_blank\">www.sydney-easy-riders.com.au/calendar.php?page=calendar</a><br>";
 
 				$email11="calendar@sydney-easy-riders.com.au";
 				$subject = "$curuser $joinstr your $etype - $ename $etimestr";
