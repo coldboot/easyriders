@@ -2,7 +2,7 @@
 
 
 
- 	ob_start(); 
+ 	ob_start();
 
 
 
@@ -18,7 +18,7 @@
 
 
 
-	
+
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-	
+
 
 
 
@@ -82,15 +82,15 @@ define("CATEGORYPATH",$dir."/category");
 
 
 
-define("CATEGORYLINK",$link."/category");	
+define("CATEGORYLINK",$link."/category");
 
 
 
-	
 
 
 
-	
+
+
 
 
 
@@ -174,7 +174,7 @@ define("CATEGORYLINK",$link."/category");
 
 
 
-	
+
 
 
 
@@ -182,7 +182,7 @@ define("CATEGORYLINK",$link."/category");
 
 
 
-	
+
 
 
 
@@ -190,7 +190,7 @@ define("CATEGORYLINK",$link."/category");
 
 
 
-function calldel(m) 
+function calldel(m)
 
 
 
@@ -226,7 +226,7 @@ return true;
 
 
 
-function checkvalue() 
+function checkvalue()
 
 
 
@@ -246,7 +246,7 @@ function checkvalue()
 
 
 
-</script>  
+</script>
 
 
 
@@ -254,7 +254,7 @@ function checkvalue()
 
 
 
-		
+
 
 
 
@@ -322,7 +322,7 @@ function checkvalue()
 
 
 
-		
+
 
 
 
@@ -330,7 +330,7 @@ function checkvalue()
 
 
 
-		
+
 
 
 
@@ -366,7 +366,7 @@ function checkvalue()
 
 
 
-			
+
 
 
 
@@ -384,7 +384,7 @@ function checkvalue()
 
 				            <li><a href="cms.php?menutype=<?php echo base64_encode('home');?>">Home</a>
 
-							
+
 
 							<ul>
 
@@ -392,7 +392,7 @@ function checkvalue()
 
 
 
-					
+
 
 						   <li><a href="cms.php?menutype=<?php echo base64_encode('strava2');?>">Strava Code #2</a></li>
 
@@ -408,27 +408,27 @@ function checkvalue()
 
 							<li><a href="cms.php?menutype=<?php echo base64_encode('aboutus');?>">About us</a></li>
 
-							
 
-							
 
-						
 
-							
 
-	                  <li><a href="cms.php?menutype=<?php echo base64_encode('privacy');?>">Privacy Policy</a></li>
+
+
+
+
+	                  <li><a href="cms.php?menutype=<?php echo base64_encode('ethos');?>">Ethos</a></li>
 
 
 
 							<li><a href="cms.php?menutype=<?php echo base64_encode('terms');?>">Terms and Conditions</a></li>
 
-							
+
 
 							<li><a href="cms.php?menutype=<?php echo base64_encode('contactus');?>">Contact us</a></li>
 
-						
 
-							
+
+
 
 
 
@@ -452,11 +452,11 @@ function checkvalue()
 
 
 
-				
 
 
 
-			
+
+
 
 
 
@@ -480,7 +480,7 @@ function checkvalue()
 
 
 
-					
+
 
 
 
@@ -490,7 +490,7 @@ function checkvalue()
 
 			</li>
 
-			
+
 
 				<li>
 
@@ -512,7 +512,7 @@ function checkvalue()
 
 
 
-					
+
 
 
 
@@ -522,7 +522,7 @@ function checkvalue()
 
 			</li>
 
-			
+
 
 			<!--	<li>
 
@@ -560,7 +560,7 @@ function checkvalue()
 
 			</li>
 
-			
+
 
 					<li>
 
@@ -586,7 +586,7 @@ function checkvalue()
 
 			</li>-->
 
-			
+
 
 			<!--	<li>
 
@@ -629,8 +629,8 @@ function checkvalue()
 
 
 				 <li><a href="viewgall.php">View Gallery</a></li>
-				 
-				 
+
+
 
 
 
@@ -651,7 +651,7 @@ function checkvalue()
 			 <li><a href="addheaderimage.php">Add Header Image</a></li>
 
 				 <li><a href="viewheaderimage.php">View Header Image</a></li>
-			
+
 			</ul>
 
 			</li>
@@ -678,7 +678,7 @@ function checkvalue()
 
 
 
-					
+
 
 
 
@@ -688,9 +688,9 @@ function checkvalue()
 
 		</li>
 
-		
 
-			
+
+
 
 			<li>
              <a href="viewlink.php">Link</a>
@@ -718,7 +718,7 @@ function checkvalue()
 				</ul>
 
 		</li>
-		
+
 
 		<li>
 
@@ -734,7 +734,7 @@ function checkvalue()
 
 
 
-	
+
 
 			<li>
 
@@ -748,7 +748,7 @@ function checkvalue()
 
 
 
-				  
+
 
 
 
@@ -756,7 +756,7 @@ function checkvalue()
 
 
 
-					
+
 
 
 
@@ -766,7 +766,7 @@ function checkvalue()
 
 		</li>
 
-		
+
 
 			<li>
 
@@ -776,9 +776,9 @@ function checkvalue()
 
 </li>
 
-		
 
-		
+
+
 
 			<!--
 
@@ -806,7 +806,7 @@ function checkvalue()
 
 			</li>-->
 
-			
+
 
 		<!--	<li>
 
@@ -854,7 +854,7 @@ function checkvalue()
 
 
 
-					
+
 
 
 
@@ -866,7 +866,7 @@ function checkvalue()
 
 
 
-				
+
 
 
 
@@ -890,25 +890,25 @@ function checkvalue()
 
 		    </li>
 
-			
 
-			
 
-			
 
-		
 
-			
 
-		
 
-		
 
-			
+
+
+
+
+
+
+
+
 
 			</ul>
 
-			
+
 
 
 
@@ -962,9 +962,9 @@ function checkvalue()
 
 
 
-			
 
-			
+
+
 
 			<!--<li>
 
@@ -986,11 +986,11 @@ function checkvalue()
 
 		</li>
 
-			
 
-			
 
-			
+
+
+
 
 			<li>
 
@@ -1010,17 +1010,17 @@ function checkvalue()
 
 		</li>
 
-		
 
-	
 
-			
 
-	
 
-			
 
-			
+
+
+
+
+
+
 
 		<li>
 
@@ -1076,13 +1076,13 @@ function checkvalue()
 
 
 
-				
 
-		
 
-			
 
-		
+
+
+
+
 
 			<li>
 
@@ -1138,11 +1138,11 @@ function checkvalue()
 
 
 
-			
+
 
 -->
 
-	
+
 
 
 

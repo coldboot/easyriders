@@ -64,11 +64,13 @@
                   <?php
 					if ($fetchcms['title'] == "July Challenge")		// Horible hardcode bit to add the rides table
 					{
+						$timenow = date('Y-m-d H:i:s');
+
 						$res_sql = "SELECT varRidename, count(varRidename) as count
 									FROM tbl_cycling_events ev, tbl_cycling_attendees at, tbl_cycling_membernew me
 									WHERE ev.event_type = 'ride'
-									AND ev.event_datetime >= '2013-06-01 00:00:00'
-									AND ev.event_datetime < '2013-07-01 00:00:00'
+									AND ev.event_datetime >= '2013-07-01 00:00:00'
+									AND ev.event_datetime < '$timenow'
 									AND ev.event_id = at.event_id
 									AND at.rider_id = me.intmemberid
 									GROUP BY me.varRidename

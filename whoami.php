@@ -15,9 +15,8 @@ phpinfo();	// Show all information
 
 <H1>$_SESSION INFO</H1>
 <?php
-@session_start();
 echo '<pre>';
-Print_r ($_SESSION);
+var_dump($_SESSION);
 echo '</pre>';
 ?>
 

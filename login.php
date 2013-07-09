@@ -37,30 +37,8 @@ require('blog/wp-blog-header.php');
 				$flag= "notactive";
 			}
 		}
-		error_log("Login ".$flag." for user ".$username, 0);
-		
 		if ($flag == "success")
 		{
-			// Now attempt to log into Wordpress
-			//login, set cookies, and set current user
-			$creds = array();
-			$creds['user_login'] = $username;
-			$creds['user_password'] = $pass;
-			$creds['remember'] = false;
-			$user = wp_signon( $creds, false );
-			
-			if ( is_wp_error($user) )
-			{
-				$flag = "wp_error";
-				error_log("WP login failed ".$user->get_error_message() );
-			}
-			else
-			{
-				wp_set_current_user($user->ID, $user_login);
-			}	
-			
-			error_log("WP Login ".$flag." for user ".$username, 0);
-			
 			$intmemberid 	= $objUserdetails['intmemberid'];
 			$varUsername 	= $objUserdetails['varUsername'];
 
@@ -72,18 +50,26 @@ require('blog/wp-blog-header.php');
 
 
 			//Remember me
-			// if($rme=="rme")
-//			{
-//				$expdate=time()+(3600*24*3);
-//				setcookie("login","auto",$expdate);
-//			}
-//			else
-//			{
-//				$expdate=time()-(3600*24*3);
-//				setcookie("login","auto",$expdate);
-//			}
+
+			if($rme=="rme")
+			{
+				$expdate=time()+(3600*24*3);
+				setcookie("login","auto",$expdate);
+			}
+			else
+			{
+				$expdate=time()-(3600*24*3);
+				setcookie("login","auto",$expdate);
+			}
+
 
 			$username1=base64_encode($varUsername);
+
+			// Now attempt to log into Wordpress
+			//login, set cookies, and set current user
+			wp_login($username, $pass, true);
+			wp_setcookie($username, $pass, true);
+			wp_set_current_user($user->ID, $user_login);
 
 			?>
 			<script type="text/javascript">

@@ -2,6 +2,9 @@
 	$SortBy	= $_REQUEST['sortby'];
     $rflag=$_REQUEST['rflag'];
 	$rtype=$_REQUEST['rtype'];
+	$filterpaid=$_REQUEST['filterpaid'];
+	$filteraccept=$_REQUEST['filteraccept'];
+	$whereclause="";
 
 	if(($SortBy == "") || ($SortBy == "all"))
 	{
@@ -11,11 +14,21 @@
 	{
 		$SortList = $SortBy;
 	}
+	if ($filterpaid == "yes" || $filterpaid == "no")
+	{
+		$whereclause .= " AND `varPaid` = '$filterpaid'";
+	}
+	if ($filteraccept == "yes" || $filteraccept == "no")
+	{
+		$whereclause .= " AND `varAcceptTerms` = '$filteraccept'";
+	}
 
 	$path="../../deimage1/";
 
- 	$limqry		= "SELECT * FROM ".MEMBER." WHERE `varFirstname` LIKE '$SortList%' order by intmemberid DESC";
+ 	$limqry		= "SELECT * FROM ".MEMBER." WHERE `varFirstname` LIKE '$SortList%' $whereclause order by intmemberid DESC";
 	$R_Check1	= mysql_query($limqry);
+	$row_count = (int) mysql_num_rows($R_Check1);
+
 
 ?>
 <div id="page-wrapper">
@@ -25,34 +38,49 @@
 				<h3><a href="viewmember.php">View Member</a> | View Member List</h3>
 				</div>
 
-			<table width="548">
+			<table width="100%" >
 			  <tr  align="center">
-    <td width="504" colspan="8"><table width="85%" cellpadding="2" cellspacing="2">
-	<form name="view_cat" action="" method="POST" >
-	<TR>
-	<TD width="39%" align="right" class="white">
-	 <b>Search by Name</b></TD>
-	<td width="2%">&nbsp;	</td>
-	<td align="left" width="16%">
-		<input type="text" class="inputbox1" name="sortby">	</td>
-		<td width="43%">	<input type="submit" value="search" name="submit" class="btn ui-state-default ui-corner-all">	</td>
-	</TR>
-	<tr>
-	<td>&nbsp;</td>
-
-	</tr>
-	</form>
-	</table></td>
+    <td colspan="8">
+    	<table width="85%" cellpadding="2" cellspacing="2">
+			<form name="view_cat" action="" method="POST" >
+			<TR>
+			  <TD width="15%" align="left" class="white"><b>Filter by First Name</b></TD>
+		      <td width="3%">&nbsp;</td>
+			  <td  width="14%"align="left"><input type="text" class="inputbox1" name="sortby"></td>
+		      <td width="3%">&nbsp;</td>
+			  <td width="7%" align="right" class="white"><b>Paid</b></td>
+			  <td width="12%" ><select name="filterpaid">
+				<option value="all" <?php if ($filterpaid == "all") { echo 'selected="selected"'; } ?> >all</option>
+				<option value="no" <?php if ($filterpaid == "no") { echo 'selected="selected"'; } ?> >no</option>
+				<option value="yes" <?php if ($filterpaid == "yes") { echo 'selected="selected"'; } ?> >yes</option>
+				</select>
+			  </td>
+			  <td width="12%" align="right" class="white"><b>Accepted Terms</b></td>
+			  <td width="12%" ><select name="filteraccept">
+				<option value="all" <?php if ($filteraccept == "all") { echo 'selected="selected"'; } ?> >all</option>
+				<option value="no" <?php if ($filteraccept == "no") { echo 'selected="selected"'; } ?> >no</option>
+				<option value="yes" <?php if ($filteraccept == "yes") { echo 'selected="selected"'; } ?> >yes</option>
+				</select>
+			  </td>
+			<td width="12%"><input type="submit" value="filter" name="submit" class="btn ui-state-default ui-corner-all">	</td>
+			<td width="10%"><?php echo "Count = $row_count"; ?> </td>
+		  </TR>
+		  <tr>
+			<td colspan="10">&nbsp;</td>
+		  </tr>
+		  </form>
+		</table>
+	</td>
   </tr>
 
   <tr>
            <td colspan="8" align="center">
 					   <?php
-						echo "<a class=\"leftlinks\" href=\"viewmember.php?sortby=all\">All</a>";?>
+						echo "<a class=\"leftlinks\" href=\"viewmemberlist.php?sortby=all\">All</a>";?>
 									  &nbsp;&nbsp;&nbsp;
 									  <?php 		for($ASCII = 65; $ASCII <= 90 ; $ASCII++)
 						{
-						  echo "<a class=\"leftlinks\" href=\"viewmember.php?sortby=".chr($ASCII)."\">".chr($ASCII)."</a>&nbsp;" ."&nbsp;";
+						  echo "<a class=\"leftlinks\" href=\"viewmemberlist.php?sortby=".chr($ASCII)."\">".chr($ASCII)."</a>&nbsp;" ."&nbsp;";
 						}
 					 ?>		 	</td>
   </tr>
@@ -80,6 +108,7 @@
 						<th width="50" align="left">AcceptTerms</th>
 						<th width="50" align="left">AcceptTermsDate</th>
 						<th width="50" align="left">Insurance</th>
+						<th width="50" align="left">Insurance Other</th>
 						<th width="50" align="left">Approved</th>
 						<th width="50" align="left">ApprovedDate</th>
 						<th width="50" align="left">ApprovedBy</th>
@@ -132,6 +161,7 @@
 						<td><?php echo $fetch_cat['varAcceptTerms'];?></td>
 						<td><?php echo $fetch_cat['varAcceptTermsDate'];?></td>
 						<td><?php echo $fetch_cat['varInsurance'];?></td>
+						<td><?php echo $fetch_cat['varInsuranceOther'];?></td>
 						<td><?php echo $fetch_cat['varApproved'];?></td>
 						<td><?php echo $fetch_cat['varApprovedDate'];?></td>
 						<td><?php echo $fetch_cat['varApprovedBy'];?></td>
